@@ -1,0 +1,21 @@
+.CustomSelectField {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  min-width: calc(108px - 10px);
+  width: calc(100%);
+  min-height: calc(27px);
+  // height: calc(100%);
+  font-size: 12px;
+  color: #000;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 0px 4px;
+}
+.CustomSelectField:hover {
+  cursor: pointer;
+  background-color: #e9f5ff;
+}
