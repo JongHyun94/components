@@ -9,7 +9,7 @@
   //   white-space: nowrap;
   //   word-break: break-all;
   //   text-overflow: ellipsis;
-  & .headField {
+  .headField {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -26,16 +26,20 @@
     color: #000;
     background-color: #fff;
     border: 1px solid #ccc;
-    & .textField {
+    &:hover {
+      cursor: pointer;
+    }
+    .textField {
       margin: 4px;
-      background-color: beige;
+      // background-color: beige;
       width: calc(100% - 8px - 14px);
       min-width: calc(108px - 8px - 14px);
       height: calc(100% - 8px);
       min-height: calc(27px - 8px);
+      line-height: 23px;
     }
 
-    & img {
+    img {
       width: 12px;
       height: 12px;
       margin-right: 2px;
@@ -55,7 +59,9 @@
   }
 
   & .slideFadeInDropdown {
+    position: relative;
     overflow: hidden;
+    z-index: 99;
   }
   .slideFadeInDropdown > div {
     animation: slide-fade-in-dropdown-animation 0.4s ease;

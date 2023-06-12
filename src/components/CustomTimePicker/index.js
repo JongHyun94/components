@@ -37,7 +37,15 @@ export default class CustomTimePicker extends Component {
    * 함수(Function) 선언
    *
    *********************************************************/
-
+  handleChange = (obj) => {
+    // console.log("customTimePicker", obj);
+    this.setState({
+      ...this.state,
+      searchedValue: obj.text,
+      clickState: false,
+    });
+    this.props.onChange(obj.value);
+  };
   /*********************************************************
    *
    * Hook
@@ -45,9 +53,9 @@ export default class CustomTimePicker extends Component {
    *********************************************************/
 
   componentDidMount = () => {
-    console.log("mount");
-    let list = makeTimeList("0800", "1900", 10);
-    console.log("timelist", list);
+    // console.log("mount");
+    // let list = makeTimeList("0800", "1900", 10);
+    // console.log("timelist", list);
   };
 
   componentDidUpdate = (prevProps, prevState, snapshot) => {
@@ -83,21 +91,21 @@ export default class CustomTimePicker extends Component {
         <div
           className={styles.headField}
           style={{ width: this.props.width, height: this.props.height }}
+          onClick={() => {
+            this.setState({
+              ...this.state,
+              clickState: !this.state.clickState,
+            });
+          }}
         >
           {/* input */}
-          <span className={styles.textField}></span>
+          <span className={styles.textField}>{this.state.searchedValue}</span>
           {/* button */}
           <img
             className={
               this.state.clickState === true ? styles.over : styles.normal
             }
             src={this.state.clickState ? ImgBtnOver : ImgBtnUp}
-            onClick={() => {
-              this.setState({
-                ...this.state,
-                clickState: !this.state.clickState,
-              });
-            }}
             alt=""
           ></img>
         </div>
@@ -120,7 +128,9 @@ export default class CustomTimePicker extends Component {
                 return (
                   <CustomSelectField
                     key={time.key}
-                    value={time.value}
+                    value={time.key}
+                    text={time.value}
+                    handleChange={this.handleChange}
                   ></CustomSelectField>
                 );
               })}

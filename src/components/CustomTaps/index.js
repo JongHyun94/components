@@ -5,10 +5,10 @@ import styles from "./index.module.scss";
  * @title -
  * @author
  * @since
- * @see     CustomSelectField
+ * @see     CustomTaps
  */
 
-export default class CustomSelectField extends Component {
+export default class CustomTaps extends Component {
   /*********************************************************
    *
    * 상태(state) 선언
@@ -17,7 +17,19 @@ export default class CustomSelectField extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchedValue: "",
+      totalValues: [
+        {
+          label: "전체",
+          value: "",
+          color: "#929fbc",
+        },
+        {
+          label: "전체",
+          value: "",
+          color: "#929fbc",
+        },
+      ],
+      selectedValues: [],
     };
 
     // this.renderComponent = () => {};
@@ -47,18 +59,14 @@ export default class CustomSelectField extends Component {
 
   render() {
     return (
-      <div
-        className={styles.CustomSelectField}
-        key={this.props.value}
-        onClick={() => {
-          // console.log("click", this.props.value);
-          this.props.handleChange({
-            value: this.props.value,
-            text: this.props.text,
-          });
-        }}
-      >
-        <span>{this.props.text}</span>
+      <div className={styles.CustomTaps}>
+        {this.state.totalValues.length > 0 ? (
+          this.state.totalValues.map((value) => {
+            return <div>하</div>;
+          })
+        ) : (
+          <div>객체를 넣어주세요.</div>
+        )}
       </div>
     );
   }
